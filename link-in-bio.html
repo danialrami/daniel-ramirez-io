@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>daniel-ramirez.io</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 15px;
+        }
+
+        .profile-picture:first-child {
+            border-radius: 50%;
+        }
+
+        .profile-picture:last-child {
+            margin-top: -60px; /* Adjust this value to control spacing between images */
+            margin-bottom: -45px;
+        }
+
+        .profile h1 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .profile p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-button {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .link-button:hover {
+            background: white;
+            transform: translateY(-2px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body {
+            background: linear-gradient(
+                135deg,
+                #6e8efb 0%,
+                #8b83ef 35%,
+                #a777e3 65%,
+                #6e8efb 100%
+            );
+            background-size: 300% 300%;
+            animation: gradient 20s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <img src="cloud-01.png" alt="Profile Picture" class="profile-picture">
+            <img src="DANIEL-RAMIREZ-DARK-03.png" alt="nametag" class="profile-picture">
+            <!--
+            <h1>@danialrami</h1>
+            
+            <p>Welcome to my link tree! Explore more about me.</p>
+            -->
+        </div>
+
+        <div class="links">
+            <a href="https://danialrami.com" target="_blank" class="link-button">
+                <span>danialrami.com</span>
+            </a>
+            <a href="https://www.instagram.com/danialrami/" target="_blank" class="link-button">
+                <span>Instagram</span>
+            </a>
+            <a href="https://bsky.app/profile/danirami.bsky.social" target="_blank" class="link-button">
+                <span>Bluesky</span>
+            </a>
+            <a href="https://www.youtube.com/@danielalrami" target="_blank" class="link-button">
+                <span>YouTube</span>
+            </a>
+            <a href="https://github.com/danialrami" target="_blank" class="link-button">
+                <span>GitHub</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
