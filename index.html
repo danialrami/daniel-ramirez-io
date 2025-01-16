@@ -45,15 +45,17 @@
             width: 150px;
             height: 150px;
             margin-bottom: 15px;
+            object-fit: contain; /* This ensures the full image is visible */
         }
-
+        
         .profile-picture:first-child {
-            border-radius: 50%;
+            border-radius: 0; /* Remove the circular crop for the cloud image */
         }
-
+        
         .profile-picture:last-child {
-            margin-top: -60px; /* Adjust this value to control spacing between images */
+            margin-top: -60px;
             margin-bottom: -45px;
+            border-radius: 0; /* Ensure consistency */
         }
 
         .profile h1 {
@@ -108,7 +110,7 @@
             display: flex;
             flex-direction: column;
         }
-    
+
         .link-button:hover {
             background: white;
             transform: translateX(-50%) translateY(-2px);
