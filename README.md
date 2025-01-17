@@ -1,4 +1,4 @@
-# daniel-ramirez.io
+# [daniel-ramirez.io](https://daniel-ramirez.io)
 
 A modern, animated linktree style landing page.
 
