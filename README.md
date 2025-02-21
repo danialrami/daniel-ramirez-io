@@ -1,6 +1,6 @@
 # [daniel-ramirez.io](https://daniel-ramirez.io)
 
-A modern, animated linktree style landing page.
+A linktree style landing page.
 
 ## Contact
 
