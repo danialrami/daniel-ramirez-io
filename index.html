@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,9 +22,34 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            background: linear-gradient(
+                135deg,
+                #c9b394 0%,      /* Desaturated Golden Tan */
+                #b6bdc1 16.67%,  /* Lightened Blue Gray */
+                #a7c5bd 33.33%,  /* Desaturated Sea Green */
+                #a2a399 50%,     /* Desaturated Olive Green */
+                #d9a497 66.67%,  /* Desaturated Terra Cotta */
+                #f6f4f1 83.33%,  /* Slightly off-white Cream */
+                #c9b394 100%     /* Back to desaturated Golden Tan */
+            );
+            background-size: 300% 300%;
+            animation: gradient 40s ease infinite;
             min-height: 100vh;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .container {
@@ -92,26 +116,6 @@
             position: relative;
             left: 50%;
             transform: translateX(-50%);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(
-                135deg,
-                #D69C56 0%,      /* Golden Tan/Caramel - starting point */
-                #A5B1B7 16.67%,  /* Blue Gray */
-                #7CCDB8 33.33%,  /* Sea Green */
-                #8B8C7A 50%,     /* Olive Green */
-                #E85C41 66.67%,  /* Terra Cotta/Rust */
-                #F9F6F1 83.33%,  /* Cream/Ivory */
-                #D69C56 100%     /* Golden Tan/Caramel - back to start */
-            );
-            background-size: 300% 300%;
-            animation: gradient 20s ease infinite;
-            min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
         }
 
         .link-button:hover {
