@@ -1,0 +1,545 @@
+/* CSS Variables for LUFS Color Palette */
+:root {
+    --lufs-teal: #78BEBA;
+    --lufs-red: #D35233;
+    --lufs-yellow: #E7B225;
+    --lufs-blue: #2069af;
+    --lufs-black: #111111;
+    --lufs-white: #fbf9e2;
+    
+    /* Typography */
+    --font-title: 'Host Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-body: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    
+    /* Layout */
+    --container-max-width: 680px;
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --hero-height: 400px;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::selection {
+    background: var(--lufs-teal);
+    color: var(--lufs-white);
+}
+
+::-moz-selection {
+    background: var(--lufs-teal);
+    color: var(--lufs-white);
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--lufs-black);
+    color: var(--lufs-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Scrolling Animation at Top */
+.scrolling-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    z-index: 1000;
+    background: linear-gradient(90deg, 
+        var(--lufs-teal) 0%, 
+        var(--lufs-blue) 25%, 
+        var(--lufs-yellow) 50%, 
+        var(--lufs-red) 75%, 
+        var(--lufs-teal) 100%);
+    background-size: 200% 100%;
+    animation: scrollingGradient 8s linear infinite;
+}
+
+@keyframes scrollingGradient {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+}
+
+/* Hero Banner Section */
+.hero-banner {
+    position: relative;
+    height: var(--hero-height);
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 4px; /* Account for scrolling animation */
+}
+
+/* Background Canvas */
+#background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* FIXED: Fullscreen mode with proper positioning */
+body.fullscreen-bg {
+    overflow: hidden;
+}
+
+body.fullscreen-bg .hero-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
+    border-radius: 0;
+    margin-top: 0;
+    /* Remove flex centering in fullscreen */
+    display: block;
+}
+
+body.fullscreen-bg .scrolling-animation {
+    z-index: 1001; /* Above fullscreen background */
+}
+
+body.fullscreen-bg .container,
+body.fullscreen-bg .footer {
+    position: relative;
+    z-index: 1;
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* FIXED: Proper hero content positioning in fullscreen */
+body.fullscreen-bg .hero-content {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 1002 !important; /* Higher than container background */
+    /* Reset any margin/padding that might interfere */
+    margin: 0 !important;
+    padding: 0 !important;
+    /* Ensure visibility */
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Fullscreen Toggle Button */
+#fullscreen-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(251, 249, 226, 0.1);
+    border: 1px solid rgba(251, 249, 226, 0.2);
+    color: var(--lufs-white);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+#fullscreen-toggle:hover {
+    background: rgba(251, 249, 226, 0.2);
+    border-color: var(--lufs-teal);
+    transform: translateY(-2px);
+}
+
+/* Hero Content - Normal positioning */
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+/* Cloud Profile Picture - Keep manageable size */
+.cloud-profile {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: -100px;
+    object-fit: cover;
+    filter: drop-shadow(0 4px 20px rgba(120, 190, 186, 0.3));
+    transition: var(--transition);
+    border: 3px solid rgba(251, 249, 226, 0.1);
+}
+
+/* Name Logo - Much bigger and more prominent */
+.name-logo {
+    width: 100%;
+    max-width: 320px; /* Adjust this value to make it bigger/smaller */
+    height: auto;
+    margin-bottom: -80px;
+    filter: drop-shadow(0 6px 25px rgba(251, 249, 226, 0.2));
+    transition: var(--transition);
+}
+
+.name-logo:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 10px 40px rgba(251, 249, 226, 0.3));
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cloud-profile {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .name-logo {
+        max-width: 90%;
+    }
+}
+
+.name {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--lufs-white);
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tagline {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: rgba(251, 249, 226, 0.8);
+    font-weight: 400;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Bottom Animation Container */
+#bottom-animation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Container */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Links Section */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Link Sections and Buttons */
+.link-section {
+    position: relative;
+}
+
+.link-button {
+    background: rgba(251, 249, 226, 0.05);
+    border: 1px solid rgba(251, 249, 226, 0.1);
+    padding: 18px 24px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--lufs-white);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: left;
+    transition: var(--transition);
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+}
+
+.link-button:hover {
+    background: rgba(251, 249, 226, 0.1);
+    border-color: var(--lufs-teal);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(120, 190, 186, 0.15);
+}
+
+.link-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* FIXED: Ensure all icons display properly */
+.link-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    transition: var(--transition);
+    /* Ensure SVGs display properly */
+    display: block;
+}
+
+.link-button:hover .link-icon {
+    transform: scale(1.1);
+}
+
+/* Dropdown Arrows */
+.dropdown-arrow {
+    transition: var(--transition);
+    opacity: 0.7;
+}
+
+.dropdown-toggle.active .dropdown-arrow {
+    transform: rotate(180deg);
+    opacity: 1;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(251, 249, 226, 0.02);
+    border: 1px solid rgba(251, 249, 226, 0.05);
+    border-top: none;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    backdrop-filter: blur(10px);
+}
+
+.dropdown-content.active {
+    max-height: 200px;
+    padding: 20px;
+}
+
+/* Carousel */
+.carousel-container {
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--lufs-teal) transparent;
+}
+
+.carousel::-webkit-scrollbar {
+    height: 6px;
+}
+
+.carousel::-webkit-scrollbar-track {
+    background: rgba(251, 249, 226, 0.1);
+    border-radius: 3px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background: var(--lufs-teal);
+    border-radius: 3px;
+}
+
+.carousel::-webkit-scrollbar-thumb:hover {
+    background: var(--lufs-blue);
+}
+
+.carousel-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    background: rgba(251, 249, 226, 0.05);
+    border: 1px solid rgba(251, 249, 226, 0.1);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--lufs-white);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    min-width: 120px;
+    text-align: center;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.carousel-item:hover {
+    background: rgba(251, 249, 226, 0.1);
+    border-color: var(--lufs-teal);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(120, 190, 186, 0.2);
+}
+
+/* FIXED: Ensure carousel icons display properly */
+.carousel-item img {
+    width: 32px;
+    height: 32px;
+    transition: var(--transition);
+    /* Ensure images display properly */
+    display: block;
+    object-fit: contain;
+}
+
+.carousel-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: rgba(251, 249, 226, 0.6);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    :root {
+        --hero-height: 350px;
+    }
+    
+    .container {
+        padding: 30px 16px;
+    }
+    
+    .profile-picture {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .name {
+        font-size: 2.2rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .link-button {
+        padding: 16px 20px;
+        font-size: 0.95rem;
+    }
+    
+    .link-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .carousel-item {
+        min-width: 100px;
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+    
+    .carousel-item img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    #fullscreen-toggle {
+        top: 16px;
+        right: 16px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --hero-height: 300px;
+    }
+    
+    .container {
+        padding: 20px 12px;
+    }
+    
+    .name {
+        font-size: 1.8rem;
+    }
+    
+    .tagline {
+        font-size: 0.9rem;
+    }
+    
+    .link-button {
+        padding: 14px 16px;
+    }
+    
+    .link-content {
+        gap: 12px;
+    }
+    
+    .carousel {
+        gap: 12px;
+    }
+    
+    .carousel-item {
+        min-width: 90px;
+        padding: 10px;
+    }
+}
+
+/* Animation for page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hero-content {
+    animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.links > * {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.links > *:nth-child(1) { animation-delay: 0.1s; }
+.links > *:nth-child(2) { animation-delay: 0.2s; }
+.links > *:nth-child(3) { animation-delay: 0.3s; }
+.links > *:nth-child(4) { animation-delay: 0.4s; }
+.links > *:nth-child(5) { animation-delay: 0.5s; }
+.links > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* Initial state for animations */
+.hero-content,
+.links > * {
+    opacity: 0;
+}
+
