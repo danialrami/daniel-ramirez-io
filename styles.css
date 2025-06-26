@@ -180,7 +180,7 @@ body.fullscreen-bg .hero-content {
 /* Name Logo - Much bigger and more prominent */
 .name-logo {
     width: 100%;
-    max-width: 310px; /* Adjust this value to make it bigger/smaller */
+    max-width: 305px; /* Adjust this value to make it bigger/smaller */
     height: auto;
     margin-bottom: -80px;
     filter: drop-shadow(0 6px 25px rgba(251, 249, 226, 0.2));
