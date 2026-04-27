@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>daniel-ramirez.io</title>
+    <!-- Custom favicon representing the site's purpose -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="alternate icon" type="image/png" href="cloud-profile.png">
     
@@ -12,28 +13,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
-    <!-- umami analytics -->
-    <script defer src="https://umami.lufshq.com/script.js" data-website-id="55a25953-189a-49ef-965c-42118de5ce75"></script>
-
+    <!-- p5.js for generative background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Animated Background with Floating Shapes -->
-    <div class="animated-background">
-        <div class="floating-shape circle shape-1"></div>
-        <div class="floating-shape square shape-2"></div>
-        <div class="floating-shape circle shape-3"></div>
-        <div class="floating-shape square shape-4"></div>
-    </div>
+    <!-- Scrolling Animation at Top -->
+    <div class="scrolling-animation"></div>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Banner Background -->
     <div class="hero-banner">
+        <!-- Background canvas container -->
+        <div id="background-container"></div>
+        
+        <!-- Fullscreen toggle button
+        <button id="fullscreen-toggle" aria-label="Toggle fullscreen background">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+        </button> -->
+
         <!-- Hero Content -->
         <div class="hero-content">
             <img src="cloud-profile.png" alt="Daniel Ramirez" class="cloud-profile">
             <img src="SVG-DANIEL-RAMIREZ-02.svg" alt="Daniel Ramirez" class="name-logo">
+            <!-- LUFS<p class="tagline">Sound Designer and Composer</p> -->
         </div>
     </div>
+
+    <!-- Bottom Animation Container -->
+    <div id="bottom-animation"></div>
 
     <!-- Main content -->
     <div class="container">
@@ -62,7 +72,7 @@
                                 <span>portfolio</span>
                             </a>
                             <a href="https://echobridge.lufs.audio" target="_blank" class="carousel-item">
-                                <img src="https://echobridge.lufs.audio/favicon.svg" alt="Echo Bridge">
+                                <img src="echobridge-favicon.svg" alt="Echo Bridge">
                                 <span>echobridge</span>
                             </a>
                             <a href="https://albumdujour.lufs.audio" target="_blank" class="carousel-item">
@@ -92,20 +102,16 @@
                                 <img src="https://danialrami.com/images/front-idle.gif" alt="danialrami">
                                 <span>danialrami.com</span>
                             </a>
-                            <a href="https://reel.danialrami.com" target="_blank" class="carousel-item">
-                                <img src="https://reel.danialrami.com/favicon.svg" alt="Reel">
-                                <span>reel</span>
-                            </a>
                             <a href="https://deck.danialrami.com" target="_blank" class="carousel-item">
-                                <img src="https://www.deck.danialrami.com/favicon.svg" alt="Deck">
+                                <img src="deck-favicon.svg" alt="Deck">
                                 <span>deck</span>
                             </a>
                             <a href="https://resume.danialrami.com" target="_blank" class="carousel-item">
-                                <img src="https://resume.danialrami.com/favicon.svg" alt="Resume">
+                                <img src="resume-favicon.svg" alt="Resume">
                                 <span>resume</span>
                             </a>
                             <a href="https://time.danialrami.com" target="_blank" class="carousel-item">
-                                <img src="https://time.danialrami.com/favicon.svg" alt="Time">
+                                <img src="time-favicon.svg" alt="Time">
                                 <span>time</span>
                             </a>
                         </div>
@@ -125,6 +131,7 @@
 
             <a href="https://bsky.app/profile/danirami.bsky.social" target="_blank" class="link-button">
                 <div class="link-content">
+                    <!-- Official Bluesky favicon -->
                     <img src="https://web-cdn.bsky.app/static/favicon-32x32.png" alt="Bluesky" class="link-icon">
                     <span>Bluesky</span>
                 </div>
@@ -162,6 +169,9 @@
         <p>&copy; <span id="current-year"></span> LUFS Audio, LLC. All rights reserved.</p>
     </div>
 
+    <script src="background.js"></script>
+    <script src="bottom-animation.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
+
